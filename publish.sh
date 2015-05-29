@@ -5,6 +5,8 @@ if [ $# -ne 1 ]; then
     exit 1;
 fi
 
+rm -Rf .sculpin
+sculpin install
 sculpin generate --env=prod
 sculpin install
 
