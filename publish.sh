@@ -7,8 +7,10 @@ fi
 
 rm -Rf .sculpin
 sculpin install
+sleep 2
 sculpin generate --env=prod
 sculpin install
+sleep 2
 
 git stash
 git checkout gh-pages
