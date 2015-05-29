@@ -5,8 +5,9 @@ if [ $# -ne 1 ]; then
     exit 1;
 fi
 
-sculpin generate --env=prod
+rm -Rf .sculpin
 sculpin install
+sculpin generate --env=prod
 
 git stash
 git checkout gh-pages
@@ -20,4 +21,5 @@ git push origin --all
 
 git checkout master
 git stash pop
+rm -Rf .sculpin
 sculpin install
