@@ -1,0 +1,7 @@
+sculpin_content_types:
+    posts:
+        permalink: :title/
+sculpin_theme:
+    theme: sculpin/bootstrap-3-blog-theme
+sculpin_pagination:
+    max_per_page: 100
