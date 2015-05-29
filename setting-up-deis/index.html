@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+                        Setting Up Deis &mdash; Engine Yard Deis/Docker Workshop
+            </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+            <link href="/themes/sculpin/bootstrap-3-blog-theme/assets/css/style.css" rel="stylesheet" media="screen">
+    </head>
+<body>
+                        <header role="banner"><div class="container">
+    <h1>
+        Engine Yard Deis/Docker Workshop
+            </h1>
+</div>
+</header>
+                                    <nav role="navigation"><div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="main-menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+</nav>
+                                <div id="main">
+        <div id="content">
+                
+    <div class="container">
+    <div class="col-md-9 col-lg-9">
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Setting Up Deis</h1>
+      </header>
+  <div class="entry-content"><p>Now, we have the a cluster of CoreOS instances and a domain we can use to access the cluster. It's time
+to actually setup Deis on the hosts.</p>
+
+<p>We'll need one of the public IPs of our instances (these were output by the provision script). Any
+one will do. Then, we set an environment variable so our local <code>deisctl</code> knows who to talk to:</p>
+
+<pre><code class="sh">$ export DEISCTL_TUNNEL=&lt;instance-IP&gt;
+</code></pre>
+
+<p>Now, we need to have <code>deisctl</code> tell our CoreOS cluster what our domain will be. Note that this is
+the domain one level above what the apps will be called (i.e. the domain we set here is
+<code>&lt;elb-IP&gt;.xip.io</code>, and our apps will be <code>app-name.&lt;elb-IP&gt;.xip.io</code>).</p>
+
+<pre><code class="console">$ deisctl config platform set domain=&lt;elb-IP&gt;.xip.io
+</code></pre>
+
+<p><em>Finally</em>, we can install and start the platform. This will take about 20 minutes for the platform
+to fully start, as it's pulling each component's Docker image from Docker Hub.</p>
+
+<pre><code class="console">$ deisctl install platform
+$ deisctl start platform
+</code></pre>
+
+<p>What exactly did this do? <code>deisctl</code> talked to <a href="https://github.com/coreos/fleet">fleet</a>, the CoreOS cluster scheduler, and asked it to run the Deis components on the cluster. We can use <code>deisctl list</code> to see on which hosts  the components ended up.</p>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/configuring-dns">&laquo; Configuring DNS</a>
+                                        <a class="prev" href="/creating-a-user">Creating a User &raquo;</a>
+                    </nav>
+    
+            </div>
+    <div class="col-md-3 col-lg-3">
+        <aside class="sidebar">
+            <div class="well sidebar-nav">
+    <h4>Workshop</h4>
+    <ul class="nav">
+                    <li><a href="/installation">Installation</a></li>
+                    <li><a href="/installing-docker">Installing Docker</a></li>
+                    <li><a href="/installing-deis">Installing Deis</a></li>
+                    <li><a href="/installing-aws-tools">Installing AWS Tools</a></li>
+                    <li><a href="/deploying-to-aws">Deploying to AWS</a></li>
+                    <li><a href="/configuring-dns">Configuring DNS</a></li>
+                    <li><a href="/setting-up-deis">Setting Up Deis</a></li>
+                    <li><a href="/creating-a-user">Creating a User</a></li>
+                    <li><a href="/deploying-applications">Deploying Applications</a></li>
+                    <li><a href="/deploying-using-a-buildpack">Deploying Using a Buildpack</a></li>
+                    <li><a href="/scaling-containers">Scaling Containers</a></li>
+            </ul>
+</div>
+        </aside>
+    </div>
+</div>
+        </div>
+    </div>
+                        <footer role="contentinfo"><div class="container">
+    <p>
+        <span class="credit">Copyright © <a href="https://www.engineyard.com">Engine Yard</a> 2015</span>
+    </p>
+</div>
+</footer>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+                        Installing Deis &mdash; Engine Yard Deis/Docker Workshop
+            </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+            <link href="/themes/sculpin/bootstrap-3-blog-theme/assets/css/style.css" rel="stylesheet" media="screen">
+    </head>
+<body>
+                        <header role="banner"><div class="container">
+    <h1>
+        Engine Yard Deis/Docker Workshop
+            </h1>
+</div>
+</header>
+                                    <nav role="navigation"><div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="main-menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+</nav>
+                                <div id="main">
+        <div id="content">
+                
+    <div class="container">
+    <div class="col-md-9 col-lg-9">
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Installing Deis</h1>
+      </header>
+  <div class="entry-content"><p>We'll need both <code>deis</code> (the Deis CLI) and <code>deisctl</code> (the Deis provision tool). Both clients are
+automatically built when we ship new releases of Deis, and be grabbed with our install scripts.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> To find out the latest version of Deis, simply go to the <a href="https://github.com/deis/deis/releases">releases page</a></p>
+</blockquote>
+
+<pre><code class="console">$ curl -sSL http://deis.io/deisctl/install.sh | sh -s &lt;version&gt; # e.g. 1.6.1
+$ curl -sSL http://deis.io/deis-cli/install.sh | sh
+</code></pre>
+
+<p>Both scripts will dump the binaries in the current working directory. We probably want them somewhere
+else:</p>
+
+<pre><code class="console">$ mv ./deis* /usr/local/bin/
+</code></pre>
+
+<h3 id="clone-deis">Clone Deis</h3>
+
+<ul>
+<li><a href="https://github.com/deis/deis/fork">Fork deis</a> to your account</li>
+<li>Clone Deis: </li>
+</ul>
+
+<pre><code class="sh">git clone git@github.com:&lt;username&gt;/deis.git
+cd deis
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> replace <code>&lt;username&gt;</code> with your github username</p>
+</blockquote>
+
+<p>Make sure we're using the correct version of the code (as used above)</p>
+
+<pre><code class="sh">$ git fetch --tags
+$ git checkout v&lt;version&gt;
+</code></pre>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/installing-docker">&laquo; Installing Docker</a>
+                                        <a class="prev" href="/installing-aws-tools">Installing AWS Tools &raquo;</a>
+                    </nav>
+    
+            </div>
+    <div class="col-md-3 col-lg-3">
+        <aside class="sidebar">
+            <div class="well sidebar-nav">
+    <h4>Workshop</h4>
+    <ul class="nav">
+                    <li><a href="/installation">Installation</a></li>
+                    <li><a href="/installing-docker">Installing Docker</a></li>
+                    <li><a href="/installing-deis">Installing Deis</a></li>
+                    <li><a href="/installing-aws-tools">Installing AWS Tools</a></li>
+                    <li><a href="/deploying-to-aws">Deploying to AWS</a></li>
+                    <li><a href="/configuring-dns">Configuring DNS</a></li>
+                    <li><a href="/setting-up-deis">Setting Up Deis</a></li>
+                    <li><a href="/creating-a-user">Creating a User</a></li>
+                    <li><a href="/deploying-applications">Deploying Applications</a></li>
+                    <li><a href="/deploying-using-a-buildpack">Deploying Using a Buildpack</a></li>
+                    <li><a href="/scaling-containers">Scaling Containers</a></li>
+            </ul>
+</div>
+        </aside>
+    </div>
+</div>
+        </div>
+    </div>
+                        <footer role="contentinfo"><div class="container">
+    <p>
+        <span class="credit">Copyright © <a href="https://www.engineyard.com">Engine Yard</a> 2015</span>
+    </p>
+</div>
+</footer>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

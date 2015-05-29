@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+                        Creating a User &mdash; Engine Yard Deis/Docker Workshop
+            </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+            <link href="/themes/sculpin/bootstrap-3-blog-theme/assets/css/style.css" rel="stylesheet" media="screen">
+    </head>
+<body>
+                        <header role="banner"><div class="container">
+    <h1>
+        Engine Yard Deis/Docker Workshop
+            </h1>
+</div>
+</header>
+                                    <nav role="navigation"><div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="main-menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+</nav>
+                                <div id="main">
+        <div id="content">
+                
+    <div class="container">
+    <div class="col-md-9 col-lg-9">
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Creating a User</h1>
+      </header>
+  <div class="entry-content"><p>To deploy applications to the Deis cluster, you must first register a user with the controller.</p>
+
+<p>This is done using the <code>deis register</code> command.</p>
+
+<p>To register, you must supply the controller address. The first account registered will
+be granted super user priviledges.</p>
+
+<p>The controller address is always <code>http://deis.&lt;domain&gt;</code>, where <code>&lt;domain&gt;</code> is the value
+ we supplied to <code>deisctl config platform set domain=</code> when setting up Deis (e.g. <code>&lt;elb-IP&gt;.xip.io</code>).</p>
+
+<pre><code class="sh">$ deis register http://deis.&lt;elb-IP&gt;.xip.io
+username: &lt;username&gt;
+password:
+password (confirm):
+email: &lt;email&gt;
+Registered &lt;username&gt;
+Logged in as &lt;username&gt;
+</code></pre>
+
+<h2 id="deploying-via-git">Deploying via git</h2>
+
+<p>If you plan on using <code>git push</code> to deploy applications to Deis, you must provide your SSH public key.</p>
+
+<p>Use the <code>deis keys:add</code> command to upload your default SSH public key:</p>
+
+<pre><code class="sh">$ deis keys:add
+Found the following SSH public keys:
+1) id_rsa.pub
+Which would you like to use with Deis? 1
+Uploading /Users/myuser/.ssh/id_rsa.pub to Deis... done
+</code></pre>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/setting-up-deis">&laquo; Setting Up Deis</a>
+                                        <a class="prev" href="/deploying-applications">Deploying Applications &raquo;</a>
+                    </nav>
+    
+            </div>
+    <div class="col-md-3 col-lg-3">
+        <aside class="sidebar">
+            <div class="well sidebar-nav">
+    <h4>Workshop</h4>
+    <ul class="nav">
+                    <li><a href="/installation">Installation</a></li>
+                    <li><a href="/installing-docker">Installing Docker</a></li>
+                    <li><a href="/installing-deis">Installing Deis</a></li>
+                    <li><a href="/installing-aws-tools">Installing AWS Tools</a></li>
+                    <li><a href="/deploying-to-aws">Deploying to AWS</a></li>
+                    <li><a href="/configuring-dns">Configuring DNS</a></li>
+                    <li><a href="/setting-up-deis">Setting Up Deis</a></li>
+                    <li><a href="/creating-a-user">Creating a User</a></li>
+                    <li><a href="/deploying-applications">Deploying Applications</a></li>
+                    <li><a href="/deploying-using-a-buildpack">Deploying Using a Buildpack</a></li>
+                    <li><a href="/scaling-containers">Scaling Containers</a></li>
+            </ul>
+</div>
+        </aside>
+    </div>
+</div>
+        </div>
+    </div>
+                        <footer role="contentinfo"><div class="container">
+    <p>
+        <span class="credit">Copyright © <a href="https://www.engineyard.com">Engine Yard</a> 2015</span>
+    </p>
+</div>
+</footer>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>
