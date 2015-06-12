@@ -20,7 +20,7 @@ cp -R output_prod/* .
 rm -rf output_*
 
 git add *
-git commit -m "$1"
+git commit -a -m "$1"
 git push origin --all
 
 git checkout master
