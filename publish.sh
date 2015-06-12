@@ -14,6 +14,7 @@ sleep 2
 
 git stash
 git checkout gh-pages
+sleep 2
 
 cp -R output_prod/* .
 rm -rf output_*
