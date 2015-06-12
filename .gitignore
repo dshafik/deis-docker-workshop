@@ -7,3 +7,4 @@
 deis
 example-php
 example-ruby-sinatra
+/workspace/*.tar

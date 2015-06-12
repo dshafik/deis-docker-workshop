@@ -1,0 +1,3 @@
+[submodule "workspace/dockerfiles/memcached"]
+	path = workspace/dockerfiles/memcached
+	url = git@github.com:dshafik/docker-memcached.git
