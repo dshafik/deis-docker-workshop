@@ -19,7 +19,7 @@ sleep 2
 cp -R output_prod/* .
 rm -rf output_*
 
-git add *
+git add . 
 git commit -a -m "$1"
 git push origin --all
 
