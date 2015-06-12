@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-                        About &mdash; Deis/Docker Workshop
+                        Deploying Using a Dockerfile &mdash; Deis/Docker Workshop
             </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -27,8 +27,59 @@
                 
     <div class="container">
     <div class="col-md-9 col-lg-9">
-                    <p>This workshop is maintained by <a href="https://www.engineyard.com">Engine Yard</a>.</p>
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Deploying Using a Dockerfile</h1>
+      </header>
+  <div class="entry-content"><p>In addition to using the pre-defined buildpacks, you can create a completely custom environment by deploying a <code>Dockerfile</code>. This will build the docker image on the Deis cluster and deploy it.</p>
 
+<p>To use a <code>Dockerfile</code>, simply add it to the root of your repository.</p>
+
+<h2 id="create-a-dockerfile">Create a Dockerfile</h2>
+
+<p>There are three rules that <em>must</em> be adhered to for deploying a <code>Dockerfile</code> to Deis:</p>
+
+<ol>
+<li>The Dockerfile must <code>EXPOSE</code> only one port</li>
+<li>The port <strong>must</strong> be listening for a HTTP connection</li>
+<li>A default <code>CMD</code> must be specified for running the container</li>
+</ol>
+
+<p>Here we create a simple <code>Dockerfile</code> that installs <code>jekyll</code> and serves up an example blog:</p>
+
+<pre><code class="docker">FROM ubuntu:wily
+
+RUN apt-get update -qq
+RUN apt-get install -y -q ruby ruby-dev ruby-posix-spawn python-pygments git build-essential node
+RUN gem install -V rdiscount jekyll
+
+RUN git clone https://github.com/maciakl/Sample-Jekyll-Site.git blog
+WORKDIR blog
+
+EXPOSE 4000
+
+CMD ["jekyll", "serve", "-H", "0.0.0.0"]
+</code></pre>
+
+<h2 id="deploying-to-deis">Deploying to Deis</h2>
+
+<p>As when deploying using a buildpack, you simply need to create the application, and push to it.</p>
+
+<pre><code class="sh">$ deis create
+$ git push deis master
+</code></pre>
+
+<p>To verify that it deployed successfully, you can run deis open to pull up the site in your browser.</p>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/deis-docker-workshop/deploy-buildpack">&laquo; Deploying Using a Buildpack</a>
+                                        <a class="prev" href="/deis-docker-workshop/deploying-using-docker-images">Deploying using Docker Images &raquo;</a>
+                    </nav>
+    
             </div>
     <div class="col-md-3 col-lg-3">
         <aside class="sidebar">

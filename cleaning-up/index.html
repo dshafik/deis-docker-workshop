@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-                        About &mdash; Deis/Docker Workshop
+                        Cleaning Up &mdash; Deis/Docker Workshop
             </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -27,8 +27,23 @@
                 
     <div class="container">
     <div class="col-md-9 col-lg-9">
-                    <p>This workshop is maintained by <a href="https://www.engineyard.com">Engine Yard</a>.</p>
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Cleaning Up</h1>
+      </header>
+  <div class="entry-content"><p>When you are ready to shutdown your Deis cluster, simply issue:</p>
 
+<pre><code class="sh">$ aws cloudformation delete-stack --stack-name deis
+</code></pre>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/deis-docker-workshop/scaling-containers">&laquo; Scaling Containers</a>
+                                </nav>
+    
             </div>
     <div class="col-md-3 col-lg-3">
         <aside class="sidebar">

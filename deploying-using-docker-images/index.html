@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-                        About &mdash; Deis/Docker Workshop
+                        Deploying using Docker Images &mdash; Deis/Docker Workshop
             </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -27,8 +27,63 @@
                 
     <div class="container">
     <div class="col-md-9 col-lg-9">
-                    <p>This workshop is maintained by <a href="https://www.engineyard.com">Engine Yard</a>.</p>
+                    
+    <article class="hentry" role="article">
+              <header>
+          <h1 class="entry-title">Deploying using Docker Images</h1>
+      </header>
+  <div class="entry-content"><p>You can also deploy fully-backed Docker images — for examples those created by your continuous integration system.</p>
 
+<p>Images <strong>must</strong> be pushed to Docker hub (or a private registry) prior to deployment on Deis.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> support for Docker registry authentication is coming soon. This means your image <em>must</em> be public.</p>
+</blockquote>
+
+<h2 id="build-and-push-the-image">Build and Push The Image</h2>
+
+<p>As with using a <code>Dockerfile</code>, you must still adhere to the following when deploying to Deis:</p>
+
+<ol>
+<li>The docker image must <code>EXPOSE</code> only one port</li>
+<li>The port <strong>must</strong> be listening for a HTTP connection</li>
+<li>A default <code>CMD</code> must be specified for running the container</li>
+</ol>
+
+<p>Once you have a <code>Dockerfile</code> that meets this criteria, you can build the docker image like so:</p>
+
+<pre><code class="sh">$ docker build -t &lt;username&gt;/&lt;image&gt; .
+$ docker push &lt;username&gt;/&lt;image&gt; .
+</code></pre>
+
+<h2 id="deploying-to-deis">Deploying to Deis</h2>
+
+<p>To deploy, we must first create an application on the controller, which requires a local working directory:</p>
+
+<pre><code class="sh">$ mkdir -p /tmp/app-name
+$ cd /tmp/app-name
+$ deis create
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> The deis client uses the name of the current directory as the default app name.</p>
+</blockquote>
+
+<p>Then you can have Deis simply pull the image and deploy it:</p>
+
+<pre><code class="sh">$ deis pull &lt;username&gt;/&lt;image&gt;
+</code></pre>
+
+<p>To verify that it deployed successfully, you can run deis open to pull up the site in your browser.</p>
+</div>
+
+    </article>
+
+            <nav class="ordered-content">
+                            <a class="next" href="/deis-docker-workshop/deploying-using-a-dockerfile">&laquo; Deploying Using a Dockerfile</a>
+                                        <a class="prev" href="/deis-docker-workshop/scaling-containers">Scaling Containers &raquo;</a>
+                    </nav>
+    
             </div>
     <div class="col-md-3 col-lg-3">
         <aside class="sidebar">

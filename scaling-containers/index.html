@@ -32,8 +32,12 @@
               <header>
           <h1 class="entry-title">Scaling Containers</h1>
       </header>
-  <div class="entry-content"><p>Let's try scaling up more containers of our app. Pick either the Ruby or PHP application
-and <code>cd</code> into the application directory. Then we can scale using the <code>deis scale</code> command:</p>
+  <div class="entry-content"><p>Let's try scaling up more containers of our app. Pick any application currently deployed to the Deis cluster
+and <code>cd</code> into the application directory. Then we can scale using the <code>deis scale</code> command.</p>
+
+<h2 id="buildpacks">Buildpacks</h2>
+
+<p>If the application was deployed using a buildpack, we want to scale the <code>web</code> processes:</p>
 
 <pre><code class="sh">$ deis scale web=3
 Scaling processes... but first, coffee!
@@ -47,13 +51,21 @@ web.3 up (v2)
 </code></pre>
 
 <p>If we refresh our browser a few times, we see three containers responding to traffic.</p>
+
+<h2 id="dockerfiles-and-docker-images">Dockerfiles and Docker Images</h2>
+
+<p>When using a <code>Dockerfile</code> or Docker image, deis will scale the <code>CMD</code> process to 1. To increase this use:</p>
+
+<pre><code class="sh">deis scale cmd=3
+</code></pre>
 </div>
 
     </article>
 
             <nav class="ordered-content">
-                            <a class="next" href="/deis-docker-workshop/deploy-buildpack">&laquo; Deploying Using a Buildpack</a>
-                                </nav>
+                            <a class="next" href="/deis-docker-workshop/deploying-using-docker-images">&laquo; Deploying using Docker Images</a>
+                                        <a class="prev" href="/deis-docker-workshop/cleaning-up">Cleaning Up &raquo;</a>
+                    </nav>
     
             </div>
     <div class="col-md-3 col-lg-3">
@@ -71,7 +83,10 @@ web.3 up (v2)
                     <li><a href="/deis-docker-workshop/creating-a-user">Creating a User</a></li>
                     <li><a href="/deis-docker-workshop/deploying-applications">Deploying Applications</a></li>
                     <li><a href="/deis-docker-workshop/deploy-buildpack">Deploying Using a Buildpack</a></li>
+                    <li><a href="/deis-docker-workshop/deploying-using-a-dockerfile">Deploying Using a Dockerfile</a></li>
+                    <li><a href="/deis-docker-workshop/deploying-using-docker-images">Deploying using Docker Images</a></li>
                     <li><a href="/deis-docker-workshop/scaling-containers">Scaling Containers</a></li>
+                    <li><a href="/deis-docker-workshop/cleaning-up">Cleaning Up</a></li>
             </ul>
 </div>
         </aside>
