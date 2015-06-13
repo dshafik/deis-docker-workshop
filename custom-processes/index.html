@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-                        Installing Docker &mdash; Deis/Docker Workshop
+                        Custom Processes &mdash; Deis/Docker Workshop
             </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -30,40 +30,93 @@
                     
     <article class="hentry" role="article">
               <header>
-          <h1 class="entry-title">Installing Docker</h1>
+          <h1 class="entry-title">Custom Processes</h1>
       </header>
-  <div class="entry-content"><h2 id="mac-os-x">Mac OS X</h2>
+  <div class="entry-content"><p>By default, Deis supports two processes, which it will automatically start when the container is deployed:</p>
 
-<p>First, install <a href="https://github.com/boot2docker/osx-installer/releases/latest">boot2docker (latest)</a>.</p>
+<ol>
+<li><code>web</code> — for applications deployed using a buildpack</li>
+<li><code>cmd</code> - for applications deployed using a <code>Dockerfile</code> or docker image</li>
+</ol>
 
-<p>Then, in a terminal run:</p>
+<p>You can also specify your own processes, that can then be started, and scaled independently. This is done by adding a <code>Procfile</code> in the root of your application.</p>
 
-<pre><code class="sh">$ boot2docker init                  # Download the boot2docker ISO &amp; Setup SSH key
-$ boot2docker start                 # Start the VM and Docker Daemon
-$ eval "$(boot2docker shellinit)    # Create certs and setup shell
+<h2 id="creating-new-processes">Creating New Processes</h2>
+
+<p>To create a new process type, you simply define it in the <code>Procfile</code>, using the following pattern:</p>
+
+<pre><code class="sh">&lt;process name&gt;: &lt;command&gt;
 </code></pre>
 
-<h2 id="linux">Linux</h2>
+<p>For example, we could add a process type that will run a task workers within our codebase:</p>
 
-<ul>
-<li>Use the official installation shell script: <code>curl -sSL https://get.docker.com/ | sh</code>
+<pre><code class="sh">processor: python /workers/process-files.py
+translator: ruby /workers/translate-file.py
+</code></pre>
 
-<ul>
-<li>To see what the script does, view <a href="https://get.docker.com/">https://get.docker.com/</a></li>
-<li><em>Most distros have a much-too-old version of Docker in their package repositories</em> - using this script should give us the latest</li>
-</ul></li>
-</ul>
+<h2 id="starting-%26-scaling-processes">Starting &amp; Scaling Processes</h2>
 
-<h2 id="confirming-successful-installation">Confirming Successful Installation</h2>
+<p>To start or scale a process, we use the <code>deis scale</code> command. We can run any different number of instances of each process type.</p>
 
-<p>To confirm Docker is working properly run <code>docker info</code>.</p>
+<pre><code class="sh">$ deis scale processor=2 translator=4
+</code></pre>
+
+<h2 id="restarting-processes">Restarting Processes</h2>
+
+<p>To restart processes use <code>deis ps:restart</code>.</p>
+
+<p>To restart all processes of a given type use:</p>
+
+<pre><code class="sh">$ deis ps:restart web
+Restarting processes... but first, coffee!
+done in 14s
+=== &lt;random&gt;-&lt;words&gt; Processes
+
+--- web:
+web.1 up (v2)
+web.2 up (v2)
+web.3 up (v2)
+</code></pre>
+
+<p>To restart a single process simply specify it's number:</p>
+
+<pre><code class="sh">$ deis ps:restart web.1
+Restarting processes... but first, coffee!
+done in 11s
+=== &lt;random&gt;-&lt;words&gt; Processes
+
+--- web:
+web.1 up (v2)
+web.2 up (v2)
+web.3 up (v2)
+</code></pre>
+
+<h2 id="monitoring-processes">Monitoring Processes</h2>
+
+<p>You can see what is currently running on the cluster using <code>deis ps</code>:</p>
+
+<pre><code class="sh">$ deis ps
+
+=== &lt;random&gt;-&lt;words&gt; Processes
+
+--- web:
+web.1 up (v2)
+web.2 up (v2)
+web.3 up (v2)
+processor.1 up (v2)
+processor.2 up (v2)
+translator.1 up (v2)
+translator.2 up (v2)
+translator.3 up (v2)
+translator.4 up (v2)
+</code></pre>
 </div>
 
     </article>
 
             <nav class="ordered-content">
-                            <a class="next" href="/deis-docker-workshop/installation">&laquo; Installation</a>
-                                        <a class="prev" href="/deis-docker-workshop/installing-deis">Installing Deis &raquo;</a>
+                            <a class="next" href="/deis-docker-workshop/custom-domains">&laquo; Custom Domains</a>
+                                        <a class="prev" href="/deis-docker-workshop/cleaning-up">Cleaning Up &raquo;</a>
                     </nav>
     
             </div>
