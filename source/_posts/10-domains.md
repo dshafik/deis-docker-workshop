@@ -25,6 +25,7 @@ To remove a domain, use `deis domain:remove`:
 
 ```sh
 $ deis domains:remove
+Removing example.org from <random>-<words>... done
 ```
 
 ## Reviewing Domains
@@ -33,4 +34,6 @@ You can review all current domains using `deis domains:list`.
 
 ```sh
 $ deis domains:list
+=== <random>-<words> Domains
+example.org
 ```

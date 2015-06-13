@@ -34,4 +34,12 @@ When using a `Dockerfile` or Docker image, deis will scale the `CMD` process to 
 
 ```sh
 deis scale cmd=3
+Scaling processes... but first, coffee!
+done in 46s
+=== <random>-<words> Processes
+
+--- cmd:
+cmd.1 up (v2)
+cmd.2 up (v2)
+cmd.3 up (v2)
 ```

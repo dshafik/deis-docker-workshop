@@ -11,7 +11,7 @@ directory. These provision scripts provision a cluster of CoreOS machines (3 by 
 system tweaks for Deis. We also configure things like EBS volumes and their mount points, install
 some helper scripts, etc.
 
-First, we need to tell Deis to use our key. Edit `contrib/ec2/cloudformation.json` to specify the key:
+First, we need to tell Deis to use our key. Edit `contrib/ec2/cloudformation.json` to confirm the key:
 
 ```javascript
 [
@@ -21,8 +21,6 @@ First, we need to tell Deis to use our key. Edit `contrib/ec2/cloudformation.jso
     }
 ]
 ```
-
-> **Note:** replace `$USER` with your username
 
 We should also add it to our local SSH agent so it's offered when we try to log into the machines:
 

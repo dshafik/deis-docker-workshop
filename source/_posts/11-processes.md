@@ -17,13 +17,13 @@ You can also specify your own processes, that can then be started, and scaled in
 
 To create a new process type, you simply define it in the `Procfile`, using the following pattern:
 
-```sh
+```yaml
 <process name>: <command>
 ```
 
 For example, we could add a process type that will run a task workers within our codebase:
 
-```sh
+```yaml
 processor: python /workers/process-files.py
 translator: ruby /workers/translate-file.py
 ```

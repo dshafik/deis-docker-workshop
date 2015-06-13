@@ -25,7 +25,7 @@ deis-deiswebelb-<id>.us-east-1.elb.amazonaws.com.
 
 ## Using xip.io
 
-[xip.io](http://xip.io) is a free service that automatically resolves `some-string.<IP>.xip.io`
+[xip.io](http://xip.io) is a free service that automatically resolves `some-string.<elb-IP>.xip.io`
 to the IP in the hostname.
 
 While it's not recommended to create A records for AWS ELBs, as the actual IPs can
@@ -43,11 +43,4 @@ Then, we can compose a domain as `some-string.<elb-IP>.xip.io`. For example:
 ```console
 $ dig <some-string>.<elb-IP>.xip.io A +short
 <ip>
-```
-
-We also provide the SSH key we used to provision the hosts. This is used by the `deis run` command
-to log into the host machine and schedule one-off tasks:
-
-```sh
-$ deisctl config platform set sshPrivateKey=~/.ssh/deis-$USER
 ```

@@ -24,6 +24,13 @@ To minimize the number of deployments, you should attempt to set multiple enviro
 
 ```sh
 $ deis config:set DATABASE_USER=myapp DATABASE_PASSWORD=mypassword DATABASE_HOST=my.db.host
+Creating config... done, v#
+
+=== <random>-<words>
+DATABASE_PASSWORD: mypassword
+DEIS_APP: <random>-<words>
+DATABASE_HOST: my.db.host
+DATABASE_USER: myapp
 ```
 
 ## Using Environment Files
@@ -63,6 +70,14 @@ This will _merge_ the config with the existing environment.
 ## Reviewing Configuration
 
 You can easily review the configuration using `deis config:list`.
+
+```sh
+$ deis config:list
+=== <random>-<words> Config
+DATABASE_HOST          my.db.host
+DATABASE_PASSWORD      mypassword
+DATABASE_USER          myapp
+```
 
 ## Deleting Environment Variables
 

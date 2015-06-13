@@ -16,6 +16,13 @@ one will do. Then, we set an environment variable so our local `deisctl` knows w
 $ export DEISCTL_TUNNEL=<instance-IP>
 ```
 
+We also provide the SSH key we used to provision the hosts. This is used by the `deis run` command
+to log into the host machine and schedule one-off tasks:
+
+```sh
+$ deisctl config platform set sshPrivateKey=~/.ssh/deis-$USER
+```
+
 Now, we need to have `deisctl` tell our CoreOS cluster what our domain will be. Note that this is
 the domain one level above what the apps will be called (i.e. the domain we set here is
 `<elb-IP>.xip.io`, and our apps will be `app-name.<elb-IP>.xip.io`).
