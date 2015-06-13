@@ -4,7 +4,7 @@
 /output_*/
 /source/components/
 /source/themes/sculpin/
-deis
 example-php
 example-ruby-sinatra
 /workspace/*.tar
+/workspace/deis
