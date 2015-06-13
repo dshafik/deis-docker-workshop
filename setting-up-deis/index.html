@@ -41,6 +41,12 @@ one will do. Then, we set an environment variable so our local <code>deisctl</co
 <pre><code class="sh">$ export DEISCTL_TUNNEL=&lt;instance-IP&gt;
 </code></pre>
 
+<p>We also provide the SSH key we used to provision the hosts. This is used by the <code>deis run</code> command
+to log into the host machine and schedule one-off tasks:</p>
+
+<pre><code class="sh">$ deisctl config platform set sshPrivateKey=~/.ssh/deis-$USER
+</code></pre>
+
 <p>Now, we need to have <code>deisctl</code> tell our CoreOS cluster what our domain will be. Note that this is
 the domain one level above what the apps will be called (i.e. the domain we set here is
 <code>&lt;elb-IP&gt;.xip.io</code>, and our apps will be <code>app-name.&lt;elb-IP&gt;.xip.io</code>).</p>
@@ -101,6 +107,9 @@ $ deisctl start platform
         <span class="credit">Copyright © <a href="https://www.engineyard.com">Engine Yard</a> 2015</span>
     </p>
 </div>
+<script type="text/javascript" src="/deis-docker-workshop/components/highlightjs/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<link href="../components/highlightjs/styles/github.css" rel="stylesheet" media="screen">
 </footer>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>

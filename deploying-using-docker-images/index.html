@@ -53,7 +53,7 @@
 <p>Once you have a <code>Dockerfile</code> that meets this criteria, you can build the docker image like so:</p>
 
 <pre><code class="sh">$ docker build -t &lt;username&gt;/&lt;image&gt; .
-$ docker push &lt;username&gt;/&lt;image&gt; .
+$ docker push &lt;username&gt;/&lt;image&gt;:latest
 </code></pre>
 
 <h2 id="deploying-to-deis">Deploying to Deis</h2>
@@ -71,7 +71,7 @@ $ deis create
 
 <p>Then you can have Deis simply pull the image and deploy it:</p>
 
-<pre><code class="sh">$ deis pull &lt;username&gt;/&lt;image&gt;
+<pre><code class="sh">$ deis pull &lt;username&gt;/&lt;image&gt;:latest
 </code></pre>
 
 <p>To verify that it deployed successfully, you can run deis open to pull up the site in your browser.</p>
@@ -120,6 +120,9 @@ $ deis create
         <span class="credit">Copyright © <a href="https://www.engineyard.com">Engine Yard</a> 2015</span>
     </p>
 </div>
+<script type="text/javascript" src="/deis-docker-workshop/components/highlightjs/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<link href="../components/highlightjs/styles/github.css" rel="stylesheet" media="screen">
 </footer>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
