@@ -19,7 +19,7 @@
         "components/bootstrap": "~3.0",
         "components/jquery": "~1.9.1",
         "components/font-awesome": "~4.2",
-        "components/highlightjs": "~7.3.0",
+        "components/highlightjs": "~8.5.0",
 	"sculpin/bootstrap-3-blog-theme": "dev-master"
     },
     "config": {

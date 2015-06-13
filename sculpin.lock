@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2bc97f7f34148e8b01b698b0690bb7d2",
+    "hash": "6e9c94c287881042b3cb43ac7c626c2d",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -113,20 +113,17 @@
         },
         {
             "name": "components/highlightjs",
-            "version": "7.3.0",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/highlightjs.git",
-                "reference": "60f5b260c3ae12578f7241e15e8102e9b65c4d3b"
+                "reference": "97e76108d7bcae14d0504607f67d869bfa906548"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/highlightjs/zipball/60f5b260c3ae12578f7241e15e8102e9b65c4d3b",
-                "reference": "60f5b260c3ae12578f7241e15e8102e9b65c4d3b",
+                "url": "https://api.github.com/repos/components/highlightjs/zipball/97e76108d7bcae14d0504607f67d869bfa906548",
+                "reference": "97e76108d7bcae14d0504607f67d869bfa906548",
                 "shasum": ""
-            },
-            "require": {
-                "robloach/component-installer": "*"
             },
             "type": "component",
             "extra": {
@@ -154,7 +151,7 @@
                 }
             ],
             "description": "Highlight.js highlights syntax in code examples on blogs, forums and in fact on any web pages.",
-            "time": "2013-04-24 15:11:49"
+            "time": "2015-04-09 22:06:13"
         },
         {
             "name": "components/jquery",
@@ -277,16 +274,16 @@
         },
         {
             "name": "robloach/component-installer",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobLoach/component-installer.git",
-                "reference": "319597e78604a86379af0359944290d226b0d416"
+                "reference": "9ebfe24d48b08ce63cf377d719e4ad045e057855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/319597e78604a86379af0359944290d226b0d416",
-                "reference": "319597e78604a86379af0359944290d226b0d416",
+                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/9ebfe24d48b08ce63cf377d719e4ad045e057855",
+                "reference": "9ebfe24d48b08ce63cf377d719e4ad045e057855",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +318,7 @@
                 }
             ],
             "description": "Allows installation of Components via Composer.",
-            "time": "2015-05-26 14:53:36"
+            "time": "2015-06-08 13:01:20"
         },
         {
             "name": "sculpin/bootstrap-3-blog-theme",
