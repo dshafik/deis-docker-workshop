@@ -6,6 +6,6 @@ RUN apt-get install -y -q php5-cli
 ADD . /site
 
 WORKDIR /site
-CMD /site/sculpin generate --server --env=prod
+CMD /site/sculpin generate --server
 
 EXPOSE 8000
