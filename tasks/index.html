@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-                        Deploying to AWS &mdash; Deis/Docker Workshop
+                        Tasks &mdash; Deis/Docker Workshop
             </title>        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -30,62 +30,29 @@
                     
     <article class="hentry" role="article">
               <header>
-          <h1 class="entry-title">Deploying to AWS</h1>
+          <h1 class="entry-title">Tasks</h1>
       </header>
-  <div class="entry-content"><p>The Deis project has community-contributed provision scripts for various providers in the deis <code>contrib</code>
-directory. These provision scripts provision a cluster of CoreOS machines (3 by default) with some
-system tweaks for Deis. We also configure things like EBS volumes and their mount points, install
-some helper scripts, etc.</p>
+  <div class="entry-content"><p>Best practices (12-factor) tell us that we should run maintenance and deployment
+tasks — such as database migrations — as one-off processes. Deis allows you to do this easily using <code>deis run</code>.</p>
 
-<p>First, we need to tell Deis to use our key. Edit <code>contrib/ec2/cloudformation.json</code> to confirm the key:</p>
+<p>The <code>deis run</code> command will spin up a new container (<code>web</code> or <code>cmd</code> process) in which it will run the given command, and then the container will be destroyed.</p>
 
-<pre><code class="javascript">[
-    {
-        "ParameterKey":     "KeyPair",
-        "ParameterValue":   "deis"
-    }
-]
+<p>We use <code>deis run</code> like so:</p>
+
+<pre><code class="sh">$ deis run &lt;cmd&gt;
 </code></pre>
 
-<p>We should also add it to our local SSH agent so it's offered when we try to log into the machines:</p>
+<p>For example, if we want to run a rake migration, we might use:</p>
 
-<pre><code class="sh">$ ssh-add ~/.ssh/deis-$USER
+<pre><code class="sh">$ deis run rake db:migrate
 </code></pre>
-
-<p>Generate a new discovery URL and deploy the deis cluster:</p>
-
-<pre><code class="sh">$ make discovery-url
-$ cd contrib/ec2
-$ ./provision-ec2-cluster.sh deis
-Creating CloudFormation stack deis
-{
-    "StackId": "arn:aws:cloudformation:us-east-1:69326027886:stack/deis/&lt;UUID&gt;"
-}
-Waiting for instances to be provisioned (CREATE_IN_PROGRESS, 600s) ...
-Waiting for instances to be provisioned (CREATE_IN_PROGRESS, 590s) ...
-Waiting for instances to be provisioned (CREATE_COMPLETE, 580s) ...
-Waiting for instances to pass initial health checks (600s) ...
-Waiting for instances to pass initial health checks (590s) ...
-Waiting for instances to pass initial health checks (580s) ...
-Instances are available:
-&lt;id&gt;  &lt;ip&gt;    &lt;instance type&gt;        &lt;region&gt;      running
-&lt;id&gt;  &lt;ip&gt;    &lt;instance type&gt;        &lt;region&gt;      running
-&lt;id&gt;  &lt;ip&gt;    &lt;instance type&gt;        &lt;region&gt;      running
-Using ELB &lt;elb URL&gt;
-Your Deis cluster has been successfully deployed to AWS CloudFormation and is started.
-Please continue to follow the instructions in the documentation.
-Enabling proxy protocol
-1
-</code></pre>
-
-<p>At this point you have a CoreOS cluster deployed in AWS CloudFormation.</p>
 </div>
 
     </article>
 
             <nav class="ordered-content">
-                            <a class="next" href="/deis-docker-workshop/installing-aws-tools">&laquo; Installing AWS Tools</a>
-                                        <a class="prev" href="/deis-docker-workshop/configuring-dns">Configuring DNS &raquo;</a>
+                            <a class="next" href="/deis-docker-workshop/custom-processes">&laquo; Custom Processes</a>
+                                        <a class="prev" href="/deis-docker-workshop/cleaning-up">Cleaning Up &raquo;</a>
                     </nav>
     
             </div>
