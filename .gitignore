@@ -7,5 +7,5 @@
 example-php
 example-ruby-sinatra
 *.dmg
-workspace/*.tar
-workspace/deis
+/workspace/
+/workspace/
