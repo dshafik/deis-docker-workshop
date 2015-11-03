@@ -8,3 +8,5 @@ example-php
 example-ruby-sinatra
 /workspace/*.tar
 /workspace/deis
+.DS_Store
+.idea/

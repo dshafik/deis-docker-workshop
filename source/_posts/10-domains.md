@@ -19,15 +19,6 @@ Adding example.org to <random>-<words>... done
 
 You should then create a `CNAME` record pointing to the original deis assigned domain.
 
-## Removing a Domain
-
-To remove a domain, use `deis domain:remove`:
-
-```sh
-$ deis domains:remove
-Removing example.org from <random>-<words>... done
-```
-
 ## Reviewing Domains
 
 You can review all current domains using `deis domains:list`.
@@ -36,4 +27,13 @@ You can review all current domains using `deis domains:list`.
 $ deis domains:list
 === <random>-<words> Domains
 example.org
+```
+
+## Removing a Domain
+
+To remove a domain, use `deis domain:remove`:
+
+```sh
+$ deis domains:remove example.org
+Removing example.org from <random>-<words>... done
 ```
