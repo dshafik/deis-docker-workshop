@@ -19,7 +19,7 @@
     <a class="navbar-brand" href="/deis-docker-workshop/">
         Deis/Docker Workshop
     </a>
-    <a class="brand navbar-right" href="https://www.engineyard.com"><img src="/deis-docker-workshop/images/engineyard.png"></a>
+    <a class="brand navbar-right" href="https://developer.akamai.com"><img src="/deis-docker-workshop/images/akamai.png"></a>
 </div>
 </div></div></header>
                                 <div id="main">
@@ -51,7 +51,7 @@
 <pre><code class="docker">FROM ubuntu:wily
 
 RUN apt-get update -qq
-RUN apt-get install -y -q ruby ruby-dev ruby-posix-spawn python-pygments git build-essential node
+RUN apt-get install -y -q ruby ruby-dev ruby-posix-spawn python-pygments git build-essential nodejs
 RUN gem install -V rdiscount jekyll
 
 RUN git clone https://github.com/maciakl/Sample-Jekyll-Site.git blog

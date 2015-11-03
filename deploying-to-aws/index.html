@@ -19,7 +19,7 @@
     <a class="navbar-brand" href="/deis-docker-workshop/">
         Deis/Docker Workshop
     </a>
-    <a class="brand navbar-right" href="https://www.engineyard.com"><img src="/deis-docker-workshop/images/engineyard.png"></a>
+    <a class="brand navbar-right" href="https://developer.akamai.com"><img src="/deis-docker-workshop/images/akamai.png"></a>
 </div>
 </div></div></header>
                                 <div id="main">
@@ -37,7 +37,7 @@ directory. These provision scripts provision a cluster of CoreOS machines (3 by 
 system tweaks for Deis. We also configure things like EBS volumes and their mount points, install
 some helper scripts, etc.</p>
 
-<p>First, we need to tell Deis to use our key. Edit <code>contrib/ec2/cloudformation.json</code> to confirm the key:</p>
+<p>First, we need to tell Deis to use our key. Edit <code>contrib/aws/cloudformation.json</code> to confirm the key:</p>
 
 <pre><code class="javascript">[
     {
@@ -55,8 +55,8 @@ some helper scripts, etc.</p>
 <p>Generate a new discovery URL and deploy the deis cluster:</p>
 
 <pre><code class="sh">$ make discovery-url
-$ cd contrib/ec2
-$ ./provision-ec2-cluster.sh deis
+$ cd contrib/aws
+$ ./provision-aws-cluster.sh deis
 Creating CloudFormation stack deis
 {
     "StackId": "arn:aws:cloudformation:us-east-1:69326027886:stack/deis/&lt;UUID&gt;"
@@ -79,6 +79,10 @@ Enabling proxy protocol
 </code></pre>
 
 <p>At this point you have a CoreOS cluster deployed in AWS CloudFormation.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> you may wish to copy down the instance details for future reference</p>
+</blockquote>
 </div>
 
     </article>

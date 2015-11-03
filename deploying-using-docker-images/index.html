@@ -19,7 +19,7 @@
     <a class="navbar-brand" href="/deis-docker-workshop/">
         Deis/Docker Workshop
     </a>
-    <a class="brand navbar-right" href="https://www.engineyard.com"><img src="/deis-docker-workshop/images/engineyard.png"></a>
+    <a class="brand navbar-right" href="https://developer.akamai.com"><img src="/deis-docker-workshop/images/akamai.png"></a>
 </div>
 </div></div></header>
                                 <div id="main">
@@ -32,7 +32,11 @@
               <header>
           <h1 class="entry-title">Deploying using Docker Images</h1>
       </header>
-  <div class="entry-content"><p>You can also deploy fully-backed Docker images — for examples those created by your continuous integration system.</p>
+  <div class="entry-content"><blockquote>
+  <p><strong>Note:</strong> currently Deis requires you to use Docker 1.5</p>
+</blockquote>
+
+<p>You can also deploy fully-backed Docker images — for examples those created by your continuous integration system.</p>
 
 <p>Images <strong>must</strong> be pushed to Docker hub (or a private registry) prior to deployment on Deis.</p>
 
@@ -52,9 +56,13 @@
 
 <p>Once you have a <code>Dockerfile</code> that meets this criteria, you can build the docker image like so:</p>
 
-<pre><code class="sh">$ docker build -t &lt;username&gt;/&lt;image&gt; .
+<pre><code class="sh">$ docker build -t &lt;username&gt;/&lt;image&gt; . # Don't forget the period at the end!
 $ docker push &lt;username&gt;/&lt;image&gt;:latest
 </code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> You can test this in the root of the repository for this tutorial</p>
+</blockquote>
 
 <h2 id="deploying-to-deis">Deploying to Deis</h2>
 

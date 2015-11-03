@@ -19,7 +19,7 @@
     <a class="navbar-brand" href="/deis-docker-workshop/">
         Deis/Docker Workshop
     </a>
-    <a class="brand navbar-right" href="https://www.engineyard.com"><img src="/deis-docker-workshop/images/engineyard.png"></a>
+    <a class="brand navbar-right" href="https://developer.akamai.com"><img src="/deis-docker-workshop/images/akamai.png"></a>
 </div>
 </div></div></header>
                                 <div id="main">
@@ -39,7 +39,7 @@ automatically built when we ship new releases of Deis, and be grabbed with our i
   <p><strong>Note:</strong> To find out the latest version of Deis, simply go to the <a href="https://github.com/deis/deis/releases">releases page</a></p>
 </blockquote>
 
-<pre><code class="console">$ curl -sSL http://deis.io/deisctl/install.sh | sh -s &lt;version&gt; # e.g. 1.6.1
+<pre><code class="console">$ curl -sSL http://deis.io/deisctl/install.sh | sh -s &lt;version&gt; # e.g. 1.11.2
 $ curl -sSL http://deis.io/deis-cli/install.sh | sh
 </code></pre>
 
@@ -48,6 +48,16 @@ else:</p>
 
 <pre><code class="console">$ mv ./deis* /usr/local/bin/
 </code></pre>
+
+<p>Confirm using:</p>
+
+<pre><code class="console">$ deisctl --version
+$ deis --version
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> the version numbers <em>may not match</em>.</p>
+</blockquote>
 
 <h3 id="clone-deis">Clone Deis</h3>
 

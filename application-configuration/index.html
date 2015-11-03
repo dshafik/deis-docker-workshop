@@ -19,7 +19,7 @@
     <a class="navbar-brand" href="/deis-docker-workshop/">
         Deis/Docker Workshop
     </a>
-    <a class="brand navbar-right" href="https://www.engineyard.com"><img src="/deis-docker-workshop/images/engineyard.png"></a>
+    <a class="brand navbar-right" href="https://developer.akamai.com"><img src="/deis-docker-workshop/images/akamai.png"></a>
 </div>
 </div></div></header>
                                 <div id="main">
@@ -73,7 +73,7 @@ DATABASE_HOST=my.db.host
 
 <p>You can (create or) make changes to this file and deploy them using <code>deis config:push</code>:</p>
 
-<pre><code class="sh">$ echo "MEMCACHE_HOST=localhost:11211"
+<pre><code class="sh">$ echo "MEMCACHE_HOST=localhost:11211" &gt;&gt; .env
 $ deis config:push
 
 Creating config... done, v#
@@ -97,6 +97,7 @@ MEMCACHE_HOST=localhost:11211
 DATABASE_HOST          my.db.host
 DATABASE_PASSWORD      mypassword
 DATABASE_USER          myapp
+MEMCACHE_HOST          localhost:11211
 </code></pre>
 
 <h2 id="deleting-environment-variables">Deleting Environment Variables</h2>
@@ -107,8 +108,15 @@ DATABASE_USER          myapp
 </code></pre>
 
 <blockquote>
-  <p><strong>Note:</strong> If you set the variable using <code>.env</code> previously, remember to remove it from the file too</p>
+  <p><strong>Note:</strong> environment variables are not automatically removed from <code>.env</code></p>
 </blockquote>
+
+<h2 id="updating-.env">Updating .env</h2>
+
+<p>Once you have deleted environment variables, you may want to update the local .env to match the current state of things. You do this with <code>deis config:pull</code>:</p>
+
+<pre><code class="sh">$ deis config:pull -o
+</code></pre>
 </div>
 
     </article>
