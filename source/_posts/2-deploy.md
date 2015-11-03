@@ -11,7 +11,7 @@ directory. These provision scripts provision a cluster of CoreOS machines (3 by 
 system tweaks for Deis. We also configure things like EBS volumes and their mount points, install
 some helper scripts, etc.
 
-First, we need to tell Deis to use our key. Edit `contrib/ec2/cloudformation.json` to confirm the key:
+First, we need to tell Deis to use our key. Edit `contrib/aws/cloudformation.json` to confirm the key:
 
 ```javascript
 [
@@ -32,8 +32,8 @@ Generate a new discovery URL and deploy the deis cluster:
 
 ```sh
 $ make discovery-url
-$ cd contrib/ec2
-$ ./provision-ec2-cluster.sh deis
+$ cd contrib/aws
+$ ./provision-aws-cluster.sh deis
 Creating CloudFormation stack deis
 {
     "StackId": "arn:aws:cloudformation:us-east-1:69326027886:stack/deis/<UUID>"
@@ -56,3 +56,5 @@ Enabling proxy protocol
 ```
 
 At this point you have a CoreOS cluster deployed in AWS CloudFormation.
+
+> **Note:** you may wish to copy down the instance details for future reference

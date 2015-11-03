@@ -52,7 +52,7 @@ DATABASE_HOST=my.db.host
 You can (create or) make changes to this file and deploy them using `deis config:push`:
 
 ```sh
-$ echo "MEMCACHE_HOST=localhost:11211"
+$ echo "MEMCACHE_HOST=localhost:11211" >> .env
 $ deis config:push
 
 Creating config... done, v#
@@ -77,6 +77,7 @@ $ deis config:list
 DATABASE_HOST          my.db.host
 DATABASE_PASSWORD      mypassword
 DATABASE_USER          myapp
+MEMCACHE_HOST          localhost:11211
 ```
 
 ## Deleting Environment Variables
@@ -87,4 +88,13 @@ To remove an environment variable, we can use `deis config:unset`. As with `deis
 $ deis config:unset DATABASE_USER DATABASE_PASSWORD DATABASE_HOST
 ```
 
-> **Note:** If you set the variable using `.env` previously, remember to remove it from the file too
+> **Note:** environment variables are not automatically removed from `.env`
+
+## Updating .env
+
+Once you have deleted environment variables, you may want to update the local .env to match the current state of things. You do this with `deis config:pull`:
+
+```sh
+$ deis config:pull -o
+```
+
